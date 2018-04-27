@@ -1,0 +1,32 @@
+#!/bin/sh
+
+INTERFACE="${BLOCK_INSTANCE:-wlp58s0}"
+
+[[ ! -d /sys/class/net/${INTERFACE}/wireless ]] && exit
+
+[[ "$(rfkill list wifi -n -o SOFT)" = 'blocked' ]] && exit
+
+#------------------------------------------------------------------------
+
+echo ""
+echo ""
+
+if [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]]; then
+	echo "#121216"
+	exit
+fi
+
+QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($4 * 100 / 70) }')
+
+# color
+if [[ $QUALITY -ge 80 ]]; then
+    echo "#00FF00"
+elif [[ $QUALITY -lt 80 ]]; then
+    echo "#FFF600"
+elif [[ $QUALITY -lt 60 ]]; then
+    echo "#FFAE00"
+elif [[ $QUALITY -lt 40 ]]; then
+    echo "#FF0000"
+fi
+
+

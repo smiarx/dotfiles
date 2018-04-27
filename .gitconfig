@@ -1,0 +1,8 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Maxime Sirbu
+	email = maxime.sirbu@wavely.fr
+[alias]
+	st = status
+	dif = diff
+	chk = checkout

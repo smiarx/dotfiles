@@ -1,0 +1,25 @@
+set history-max-items=3000
+
+set hint-keys=hjklfdsq
+set default-zoom=120
+set download-path=~/dowloads
+#set editor-command=urxvtc -e vim '%s'
+
+set home-page=https://duckduckgo.com/html
+set html5-database=false
+set html5-local-storage=false
+
+set hardware-acceleration-policy=always
+set smooth-scrolling=true
+
+set status-css=color:#fff;background:#555;font:9pt monospace
+
+set cookie-accept=never
+set scripts=false
+nnoremap ! :set scripts!<CR>r
+
+# search engines
+shortcut-add dd=https://duckduckgo.com/html?q=$0
+shortcut-add gg=https://encrypted.google.com/search?hl=en&q=$0
+shortcut-add al=https://wiki.archlinux.org/index.php?title=Special%%3ASearch&search=$0&go=Go
+shortcut-default dd

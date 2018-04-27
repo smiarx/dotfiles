@@ -50,3 +50,9 @@ urxvt*font:	 xft:Inconsolata:size=10, xft:DejaVuSansMono:size=10
 !! white dark/light
 *color7: #eee8d5
 *color15: #fdf6e3
+
+URxvt.perl-ext: fork-here
+URxvt.keysym.Mod4-Shift-Return: perl:fork-here:fork-at-cwd
+
+URxvt.transparent: false
+URxvt.depth:     24

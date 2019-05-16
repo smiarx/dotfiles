@@ -3,17 +3,22 @@ syntax on
 
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-	Plugin 'VundleVim/Vundle.vim'
-	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'Valloric/YouCompleteMe.git'
+ set rtp+=~/.vim/bundle/Vundle.vim
+ call vundle#begin()
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'danielwe/base16-vim'
+ 
+    Plugin 'supercollider/scvim'
+ 
+    " python
+    "Plugin 'heavenshell/vim-pydocstring'
 
-	Plugin 'supercollider/scvim'
+    Plugin 'munshkr/vim-tidal'
 
-	" python
-	Plugin 'heavenshell/vim-pydocstring'
-call vundle#end()
+    Plugin 'tpope/vim-commentary'
+
+    "Plugin 'gmoe/vim-faust'
+ call vundle#end()
 filetype plugin indent on
 
 set ruler
@@ -25,7 +30,7 @@ set display=truncate
 set scrolloff=5
 
 set tabstop=4
-set noexpandtab
+set expandtab
 set shiftwidth=4
 
 set lazyredraw
@@ -40,12 +45,37 @@ set showbreak=↪\
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 set background=dark
-colorscheme solarized
+let base16colorspace=256
+source ~/.vim/colorscheme.vim
+hi Normal ctermbg=NONE
 
 let mapleader = ","
+let maplocalleader = ","
 
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-let g:sclangTerm = "urxvtc -e"
+
+" TIDAL
+autocmd FileType tidal setlocal commentstring=--\ %s
+autocmd FileType tidal setlocal dictionary+=~/projects/supercollider/LiveCoding/.tidal_dict
+autocmd FileType tidal setlocal complete+=k
+let g:tidal_default_config = {"socket_name": "default", "target_pane": "livecoding:1"}
+au Filetype tidal command-buffer -nargs=0 TidalStart call system("livecoding-term tidal &")
+
+
+"let g:sclangTerm = 'urxvtc -e'
+let g:sclangTerm = 'livecoding-term'
+let g:sclangPipeApp = 'sclang'
+let g:scFlash = 1
+
+au Filetype supercollider nnoremap <buffer> <C-P> :call SClangHardstop()<CR>
+"au Filetype supercollider inoremap <leader> :call SCfindArgs()<CR>a
+au Filetype supercollider nnoremap <leader>a :call SCfindArgs()<CR>
+au Filetype supercollider vnoremap <leader>a :call SCfindArgsFromSelection()<CR>
+
+au Filetype supercollider nnoremap <buffer> <c-e> :call SClang_block()<CR>
+au Filetype supercollider inoremap <buffer> <c-e> :call SClang_block()<CR>a
+au Filetype supercollider vnoremap <buffer> <c-e> :call SClang_send()<CR>
+
+au Filetype supercollider vnoremap <buffer> <c-space> :call SClang_line()<CR>
+au Filetype supercollider nnoremap <buffer> <c-space> :call SClang_line()<CR>
+au Filetype supercollider inoremap <buffer> <c-space> :call SClang_line()<CR>a

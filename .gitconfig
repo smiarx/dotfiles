@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Maxime Sirbu
-	email = maxime.sirbu@wavely.fr
+	email = maxime.sirbu@disroot.org
 [alias]
 	st = status
 	dif = diff

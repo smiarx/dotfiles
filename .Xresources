@@ -1,4 +1,4 @@
-Xft.dpi: 130
+Xft.dpi: 200
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
@@ -9,47 +9,55 @@ Xft.rgba: rgb
 /* urxvt */
 urxvt*saveLines: 1000
 urxvt*scrollBar: off
-urxvt*font:	 xft:Inconsolata:size=10, xft:DejaVuSansMono:size=10
+urxvt*font:	 xft:Inconsolata:size=12, xft:DejaVuSansMono:size=12
+urxvt*urgentOnBell: on
 
-*background: #002b36
-*foreground: #657b83
-!!*fading: 40
-*fadeColor: #002b36
-*cursorColor: #93a1a1
-*pointerColorBackground: #586e75
-*pointerColorForeground: #93a1a1
+#define base00 #2c3e50
+#define base01 #34495e
+#define base02 #7f8c8d
+#define base03 #95a5a6
+#define base04 #bdc3c7
+#define base05 #e0e0e0
+#define base06 #f5f5f5
+#define base07 #ecf0f1
+#define base08 #e74c3c
+#define base09 #e67e22
+#define base0A #f1c40f
+#define base0B #2ecc71
+#define base0C #1abc9c
+#define base0D #3498db
+#define base0E #9b59b6
+#define base0F #be643c
 
-!! black dark/light
-*color0: #073642
-*color8: #002b36
 
-!! red dark/light
-*color1: #dc322f
-*color9: #cb4b16
+*foreground:   base05
+#ifdef background_opacity
+*background:   [background_opacity]base00
+#else
+*background:   base00
+#endif
+*cursorColor:  base05
 
-!! green dark/light
-*color2: #859900
-*color10: #586e75
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
 
-!! yellow dark/light
-*color3: #b58900
-*color11: #657b83
+*color8:       base03
+*color9:       base09
+*color10:      base01
+*color11:      base02
+*color12:      base04
+*color13:      base06
+*color14:      base0F
+*color15: base07
 
-!! blue dark/light
-*color4: #268bd2
-*color12: #839496
-
-!! magenta dark/light
-*color5: #d33682
-*color13: #6c71c4
-
-!! cyan dark/light
-*color6: #2aa198
-*color14: #93a1a1
-
-!! white dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
+urxvt*fading: 70
+urxvt*fadeColor: base00
 
 URxvt.perl-ext: fork-here
 URxvt.keysym.Mod4-Shift-Return: perl:fork-here:fork-at-cwd

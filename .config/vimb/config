@@ -1,9 +1,12 @@
+
 set history-max-items=3000
 
 set hint-keys=hjklfdsq
-set default-zoom=120
-set download-path=~/dowloads
+set download-path=~/downloads
 #set editor-command=urxvtc -e vim '%s'
+
+set header=DNT=1,Referer
+set user-agent=abcd
 
 set home-page=https://duckduckgo.com/html
 set html5-database=false
@@ -15,7 +18,7 @@ set smooth-scrolling=true
 set status-css=color:#fff;background:#555;font:9pt monospace
 
 set cookie-accept=never
-set scripts=false
+#set scripts=false
 nnoremap ! :set scripts!<CR>r
 
 # search engines
@@ -23,3 +26,18 @@ shortcut-add dd=https://duckduckgo.com/html?q=$0
 shortcut-add gg=https://encrypted.google.com/search?hl=en&q=$0
 shortcut-add al=https://wiki.archlinux.org/index.php?title=Special%%3ASearch&search=$0&go=Go
 shortcut-default dd
+
+:aug youtube
+:  au LoadStarted https://www.youtube.com/watch\?v=* no! <C-C>
+:  au LoadStarted https://www.youtube.com/watch\?v=* sh! sh -c "mplayer \$(youtube-dl -f best -g '%')"
+:aug end
+
+
+:aug github
+:  au LoadCommitted http{s,}://github.com/* set scripts=on
+:  au LoadCommitted * set scripts=off
+:aug end
+
+#:aug header
+#:  au LoadStarted * set header=DNT=1,User-Agent,Referer
+#:aug end

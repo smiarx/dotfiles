@@ -6,3 +6,4 @@
 	st = status
 	dif = diff
 	chk = checkout
+    rst = restore

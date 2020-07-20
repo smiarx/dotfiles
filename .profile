@@ -1,15 +1,18 @@
 export QT_QPA_PLATFORMTHEME=gtk2
 export export QT_AUTO_SCREEN_SCALE_FACTOR=2
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
+#export GDK_SCALE=2
+#export GDK_DPI_SCALE=0.5
+export GDK_SCALE=1
+export GDK_DPI_SCALE=1
 
-export MPD_HOST=~/.mpd/socket
+export MPD_HOST=${XDG_RUNTIME_DIR}/mpd/socket
 
 export http_proxy="http://localhost:8118"
+export https_proxy="http://localhost:8118"
 
 PATH="$PATH:$HOME/.local/bin"
 
-##set terminal palette
+#set terminal palette
 #if [ "$TERM" = "linux" ]; then
 #	echo -ne "\e]P02c3e50\e\\"
 #	echo -ne "\e]PA34495e\e\\"

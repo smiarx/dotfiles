@@ -1,24 +1,6 @@
 set nocompatible
 syntax on
 
-filetype off
-
- set rtp+=~/.vim/bundle/Vundle.vim
- call vundle#begin()
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'danielwe/base16-vim'
- 
-    Plugin 'supercollider/scvim'
- 
-    " python
-    "Plugin 'heavenshell/vim-pydocstring'
-
-    Plugin 'munshkr/vim-tidal'
-
-    Plugin 'tpope/vim-commentary'
-
-    "Plugin 'gmoe/vim-faust'
- call vundle#end()
 filetype plugin indent on
 
 set ruler
@@ -52,6 +34,12 @@ hi Normal ctermbg=NONE
 let mapleader = ","
 let maplocalleader = ","
 
+" netrw
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 20
+
 
 
 " TIDAL
@@ -79,3 +67,8 @@ au Filetype supercollider vnoremap <buffer> <c-e> :call SClang_send()<CR>
 au Filetype supercollider vnoremap <buffer> <c-space> :call SClang_line()<CR>
 au Filetype supercollider nnoremap <buffer> <c-space> :call SClang_line()<CR>
 au Filetype supercollider inoremap <buffer> <c-space> :call SClang_line()<CR>a
+
+
+" debug
+packadd termdebug
+let termdebugger="arm-none-eabi-gdb"

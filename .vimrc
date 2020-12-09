@@ -40,6 +40,10 @@ let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 20
 
+" reindent whole file
+map <F7> gg=G<C-o><C-o>
+nmap <F5> :make<CR>
+
 
 
 " TIDAL

@@ -5,10 +5,12 @@ export export QT_AUTO_SCREEN_SCALE_FACTOR=2
 export GDK_SCALE=1
 export GDK_DPI_SCALE=1
 
+export MOZ_ENABLE_WAYLAND=1
+
 export MPD_HOST=${XDG_RUNTIME_DIR}/mpd/socket
 
-export http_proxy="http://localhost:8118"
-export https_proxy="http://localhost:8118"
+#export http_proxy="http://localhost:8118"
+#export https_proxy="http://localhost:8118"
 
 PATH="$PATH:$HOME/.local/bin"
 
